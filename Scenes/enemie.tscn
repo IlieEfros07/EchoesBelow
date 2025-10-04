@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctshfo7qfwfsb"]
+[gd_scene load_steps=7 format=3 uid="uid://ctshfo7qfwfsb"]
 
+[ext_resource type="Script" uid="uid://cvqoqfkvfe4rw" path="res://Scripts/enemie.gd" id="1_eagjw"]
 [ext_resource type="Texture2D" uid="uid://bpmtj6h6a8c7g" path="res://Assets/Player/player (1).png" id="1_ivv0v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eagjw"]
@@ -28,7 +29,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Enemie" type="CharacterBody2D"]
+[node name="Enemie" type="CharacterBody2D" groups=["enemie"]]
+script = ExtResource("1_eagjw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

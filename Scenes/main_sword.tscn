@@ -1,17 +1,188 @@
-[gd_scene load_steps=4 format=3 uid="uid://nkc522uisvmy"]
+[gd_scene load_steps=18 format=3 uid="uid://bqcl1bgr4ccma"]
 
 [ext_resource type="Script" uid="uid://c0qp2rgrbt83u" path="res://Scripts/main_sword.gd" id="1_pyqt6"]
 [ext_resource type="Texture2D" uid="uid://tr2p7d56lwxr" path="res://Assets/Swords/sword.png" id="2_o5m0i"]
+[ext_resource type="Texture2D" uid="uid://csku3g4e651k0" path="res://Assets/Swords/sword_slash_sheet.png" id="3_o5m0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7s8jg"]
 size = Vector2(11, 47)
+
+[sub_resource type="Animation" id="Animation_o5m0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7s8jg"]
+resource_name = "return"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.15),
+"transitions": PackedFloat32Array(0.5, -2, 0.5),
+"update": 0,
+"values": [1.5708, -0.785398, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.15),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0.95, 1.05), Vector2(1.05, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pyqt6"]
+resource_name = "slash"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.13, 0.2, 0.25),
+"transitions": PackedFloat32Array(2, 2, 0.5, -2, -2, 0.5),
+"update": 0,
+"values": [-0.785398, 0.0, 0.785398, 0.785398, 1.39626, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 2, 0.5, -2, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.9), Vector2(1.2, 0.8), Vector2(0.9, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4a1wl"]
+_data = {
+&"RESET": SubResource("Animation_o5m0i"),
+&"return": SubResource("Animation_7s8jg"),
+&"slash": SubResource("Animation_pyqt6")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s8jg"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a1wl"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ut1"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lycw"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10cpk"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_517nh"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpdgu"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sbvf"]
+atlas = ExtResource("3_o5m0i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3f5ob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s8jg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a1wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7ut1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lycw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10cpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_517nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpdgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sbvf")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 12.0
+}]
 
 [node name="main_sword" type="Area2D"]
 script = ExtResource("1_pyqt6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_o5m0i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_7s8jg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4a1wl")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.62939e-06, 0)
+sprite_frames = SubResource("SpriteFrames_3f5ob")
+animation = &"slash"
